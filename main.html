@@ -9,12 +9,32 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
+			if (arr.length < 2) {
+				return -Infinity;
+			}
+
+			let first = -Infinity;
+			let second = -Infinity;
+
+			for (let i = 0; i < arr.length; i++) {
+				let num = parseInt(arr[i]); // Ensuring the elements are treated as numbers
+				if (num > first) {
+					second = first;
+					first = num;
+				} else if (num > second && num < first) {
+					second = num;
+				}
+			}
+
+			if (second === -Infinity) {
+				return -Infinity;
+			}
+
+			return second;
 		}
 
 		function Main() {
-			var n = prompt("Enter the number of elements");
+			var n = parseInt(prompt("Enter the number of elements"));
 			var arr = [];
 			for (var i = 0; i < n; i++) {
 				arr[i] = prompt("Enter element " + (i+1));
@@ -24,8 +44,7 @@
 		Main();
 	</script>
 
-    <script type="text/javascript" src="./script.js">
-</script>
+    <script type="text/javascript" src="./script.js"></script>
 
 </body>
 
